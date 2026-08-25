@@ -16,7 +16,7 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
-print("Libraries imported successfully")
+st.write("Libraries imported successfully")
 
 
 
@@ -43,13 +43,13 @@ data = pd.DataFrame({
 
 
 
-print("Rows:", len(data))
+st.write("Rows:", len(data))
 
-print("\nMissing values:")
-print(data.isnull().sum())
+st.write("\nMissing values:")
+st.write(data.isnull().sum())
 
-print("\nDuplicate rows:")
-print(data.duplicated().sum())
+st.write("\nDuplicate rows:")
+st.write(data.duplicated().sum())
 
 
 np.random.seed(42)
@@ -165,8 +165,8 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-print("Training data:", len(X_train))
-print("Testing data:", len(X_test))
+st.write("Training data:", len(X_train))
+st.write("Testing data:", len(X_test))
 
 
 
@@ -177,17 +177,17 @@ model = RandomForestClassifier(
 
 model.fit(X_train, y_train)
 
-print("Model trained successfully")
+st.write("Model trained successfully")
 
 
 y_pred = model.predict(X_test)
 
-print("Prediction completed")
+st.write("Prediction completed")
 
 
 accuracy = accuracy_score(y_test, y_pred)
 
-print("Accuracy:", round(accuracy, 2))
+st.write("Accuracy:", round(accuracy, 2))
 
 
 precision = precision_score(y_test, y_pred)
@@ -196,14 +196,14 @@ recall = recall_score(y_test, y_pred)
 
 f1 = f1_score(y_test, y_pred)
 
-print("Precision:", round(precision, 2))
-print("Recall:", round(recall, 2))
-print("F1 Score:", round(f1, 2))
+st.write("Precision:", round(precision, 2))
+st.write("Recall:", round(recall, 2))
+st.write("F1 Score:", round(f1, 2))
 
 
 cm = confusion_matrix(y_test, y_pred)
 
-print(cm)
+st.write(cm)
 plt.figure(figsize=(6, 5))
 
 sns.heatmap(
@@ -237,9 +237,9 @@ new_customer["AverageMonthlySpend"] = (
 prediction = model.predict(new_customer)[0]
 
 if prediction == 1:
-    print("Customer is likely to CHURN")
+    st.write("Customer is likely to CHURN")
 else:
-    print("Customer is likely to STAY")
+    st.write("Customer is likely to STAY")
 
 
 
@@ -253,4 +253,4 @@ results.to_csv(
     index=False
 )
 
-print("Results saved successfully")
+st.write("Results saved successfully")
